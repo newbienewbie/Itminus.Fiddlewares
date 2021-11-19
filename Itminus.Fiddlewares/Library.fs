@@ -4,7 +4,7 @@
 type Middleware<'Context,'Result> = ('Context -> 'Result) -> 'Result
 
 module Middleware = 
-    // 运行一个中间件函数：需要传递一个延续子
+    /// 运行一个中间件函数：需要传递一个延续子
     let run mw (cont: 'Context -> 'Result) = 
         mw cont
 
@@ -19,5 +19,8 @@ module Middleware =
                 run mw2 next                    // cont2 等同于 合成mw'的延续cont'
             run mw1 cont1
 
+    /// bind operator
     let (>>=) m fn = bind fn m
+
+    /// 复合两个 'ctx -> 'next -> 'result 函数
     let (>=>) f1 f2 =  f1 >> bind f2
