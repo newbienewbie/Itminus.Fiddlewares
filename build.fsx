@@ -16,7 +16,7 @@ Target.initEnvironment ()
 Target.create "Clean" (fun _ ->
     !! "Itminus.Fiddlewares/**/bin"
     ++ "Itminus.Fiddlewares/**/obj"
-    !! "Itminus.Fiddlewares.Tests/**/bin"
+    ++ "Itminus.Fiddlewares.Tests/**/bin"
     ++ "Itminus.Fiddlewares.Tests/**/obj"
     |> Shell.cleanDirs 
 )
